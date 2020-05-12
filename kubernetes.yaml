@@ -1,0 +1,55 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: findcustomer-deployment
+spec:
+  selector:
+    matchLabels:
+      app: findcustomer
+  replicas: 1 # deployment runs 1 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: findcustomer
+    spec:
+      containers:
+      - name: findcustomer
+        image: iad.ocir.io/id4beafwqb9e/cristianohoshikawa/findcustomer:latest
+        ports:
+        - containerPort: 8082
+
+      imagePullSecrets:
+      # enter the name of the secret you created
+      - name: ocirsecret
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: findcustomer-service
+  labels:
+    app: findcustomer-service
+spec:
+#  type: LoadBalancer #Exposes the service as a node port.
+#  ports:
+#  - port: 8082
+#    targetPort: 8082
+  selector:
+    app: findcustomer
+
+  type: NodePort
+  ports:
+  - port: 8082
+    nodePort: 32334
+
+#  clusterIP: None
+#  ports:
+#    - port: 8082
+#      name: rest
+#    - port: 30682
+#      name: inter-node
+#      targetPort: 30682
+
+#  ports:
+#  - port: 8082
+#    protocol: TCP
+#    targetPort: 30682
