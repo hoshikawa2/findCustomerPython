@@ -33,17 +33,17 @@ spec:
 #  - port: 8082
 #    targetPort: 8082
 #
-#  selector:
-#    app: findcustomer
-#  type: NodePort
-#  ports:
-#  - port: 8082
-#    nodePort: 32334
-  type: LoadBalancer
+  selector:
+    app: findcustomer
+  type: NodePort
   ports:
   - port: 8082
-    protocol: TCP
-    targetPort: 8082
+    nodePort: 32334
+#  type: LoadBalancer
+#  ports:
+#  - port: 8082
+#    protocol: TCP
+#    targetPort: 8082
 #  clusterIP: None
 #  ports:
 #    - port: 8082
