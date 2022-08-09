@@ -11,11 +11,11 @@ app = Flask(__name__)
 @app.route("/findCustomer/<string:nome>/<string:cpf>/<string:cartao>", methods=['GET'])
 def findCustomer(nome, cpf, cartao):
     with zipkin_span(
-            service_name="DemoAPMApp", #You can change it as you need
-            span_name="Demo OCI APM App Spans", #You can change it as you need
+            service_name="findCustomer", #You can change it as you need
+            span_name="get", #You can change it as you need
             transport_handler=http_transport, #zipkin transport, will use it to upload trace data to OCI APM
             encoding = Encoding.V2_JSON,
-            binary_annotations = {"oci-apm":"This is a Test APM tracing web application"}, #Custom tag
+            binary_annotations = {"get":"customer information for BOT"}, #Custom tag
             sample_rate=100 # this is optional and can be used to set custom sample rates
     ):
         nomeCompleto = "Cristiano Hoshikawa";
