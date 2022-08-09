@@ -1,0 +1,35 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: findcustomer-gateway
+spec:
+  selector:
+    istio: ingressgateway # use Istio default gateway implementation
+  servers:
+  - port:
+      number: 8082
+      name: findcustomer
+      protocol: HTTP
+    hosts:
+    - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: findcustomer-vts
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - findcustomer-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /
+    rewrite:
+        uri: /
+    route:
+    - destination:
+        port:
+          number: 8082
+        host: findcustomer-service
