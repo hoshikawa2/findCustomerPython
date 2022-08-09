@@ -23,8 +23,4 @@ def findCustomer(nome, cpf, cartao):
         return jsonify({'nomeCompleto': nomeCompleto, 'plano': plano});
 
 if __name__ == "__main__":
-<<<<<<< HEAD
     app.run(host='0.0.0.0', port=8082)
-=======
-    app.run(host='0.0.0.0', port=5001)
->>>>>>> 567af80fb7bfa49d3411d59bca5760ace3482983
