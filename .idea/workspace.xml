@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f9e8151-a672-448b-b9ea-25859c9ec5d2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findCustomer-ingress.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/findCustomer-ingress.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +131,7 @@
       <workItem from="1625799538091" duration="13000" />
       <workItem from="1625884934575" duration="24000" />
       <workItem from="1625885340621" duration="12000" />
-      <workItem from="1660042771168" duration="2976000" />
+      <workItem from="1660042771168" duration="3180000" />
     </task>
     <servers />
   </component>

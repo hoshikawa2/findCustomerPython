@@ -1,4 +1,4 @@
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: findcustomer-gateway
@@ -13,7 +13,7 @@ spec:
     hosts:
     - "*"
 ---
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: findcustomer-vts
@@ -22,14 +22,11 @@ spec:
   - "*"
   gateways:
   - findcustomer-gateway
-  http:
+  tcp:
   - match:
-    - uri:
-        prefix: /
-    rewrite:
-        uri: /
+    - port: 8082
     route:
     - destination:
+        host: findcustomer-service
         port:
           number: 8082
-        host: findcustomer-service
